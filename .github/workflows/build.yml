@@ -29,7 +29,7 @@ jobs:
       - name: Upload to Releases
         uses: d1ceward/draft-assets-release-action@v2.1.0
         with:
-          token: ${secrets.GH_TOKEN}
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             wuwa-tweaks.exe
             wuwa-tweaks-linux
