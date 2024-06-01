@@ -1,0 +1,32 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - main
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Init Bun
+        uses: oven-sh/setup-bun@v1.2.1
+        with:
+          bun-version: latest
+          
+      - name: Install Dependencies
+        run: bun install
+      - name: Build Windows
+        run: bun run build-win
+      - name: Build Linux
+        run: bun run build-linux
+      - name: Build Mac
+        run: bun run build-mac
+      
+
+      
+          
+          
+      
+            
