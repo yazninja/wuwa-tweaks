@@ -2,10 +2,7 @@ name: CI/CD
 on:
   push:
     tags:
-      - latest
       - 'v*'
-    branches:
-      - main
 jobs: 
   build:
     runs-on: ubuntu-latest
