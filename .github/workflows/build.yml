@@ -24,13 +24,10 @@ jobs:
       - name: Build Mac
         run: bun run build-mac
       - name: Upload to Releases
-        uses: SierraSoftworks/gh-releases@v1.0.7
+        uses: actions/upload-artifact@v4.3.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            dist/wuwa-tweaks.exe
-            dist/wuwa-tweaks-linux
-            dist/wuwa-tweaks-mac
+          name: artifacts
+          path: dist/
             
         
       
