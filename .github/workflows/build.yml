@@ -31,9 +31,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            wuwa-tweaks.exe
-            wuwa-tweaks-linux
-            wuwa-tweaks-mac
+            dist/wuwa-tweaks.exe
+            dist/wuwa-tweaks-linux
+            dist/wuwa-tweaks-mac
             
         
       
