@@ -1,0 +1,23 @@
+{
+  "name": "wuwa-tweaks",
+  "module": "index.ts",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build-win": "bun build --compile --minify --target=bun-windows-x64-modern index.ts --outfile dist/wuwa-tweaks",
+    "build-mac": "bun build --compile --minify --target=bun-macos-x64-modern index.ts --outfile dist/wuwa-tweaks-mac",
+    "build-linux": "bun build --compile --minify --target=bun-linux-x64-modern index.ts --outfile dist/wuwa-tweaks-linux"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@fheahdythdr/node-file-dialog": "^1.0.8",
+    "@inquirer/prompts": "^5.0.5",
+    "@types/ini": "^4.1.0",
+    "ini": "^4.1.3"
+  }
+}
