@@ -24,7 +24,7 @@ jobs:
       - name: Build Mac
         run: bun run build-mac
       - name: Upload to Releases
-        uses: d1ceward/draft-assets-release-action@v2.1.0
+        uses: SierraSoftworks/gh-releases@v1.0.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
