@@ -1,6 +1,9 @@
 name: CI/CD
 on:
   push:
+    tags:
+      - latest
+      - 'v*'
     branches:
       - main
 jobs: 
