@@ -247,9 +247,7 @@ async function optimizeGraphics(tweakPath: string) {
     let config = parse(tweakData);
 
     if(config.SystemSettings === undefined) {
-        config = {
-            SystemSettings: {}
-        }
+        config.SystemSettings = {};
     } else {
         config = config.SystemSettings;
     }
@@ -282,10 +280,13 @@ async function optimizeGraphics(tweakPath: string) {
 
             ]
         });
-        tweakChoices.map(async (tweak: number) => {
+        for(let tweak of tweakChoices) {
+            console.log("Applying", tweak);
             Object.assign(config.SystemSettings, tweaks[tweak - 1]);
-        });
-    tweakData = tweakData.split("[SystemSettings]").join("[SystemSettings]\n" + stringify(config));
+        }
+
+    tweakData = tweakData.split("[SystemSettings]")[0] + "\n[SystemSettings]\n"+ stringify(config)
+    console.log(tweakData);
     await write(tweakPath, tweakData);
 }
 
