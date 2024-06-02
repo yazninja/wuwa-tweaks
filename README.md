@@ -5,7 +5,7 @@ This is a project that makes it easy to tweak [Wuthering Waves](https://wutherin
 ## Usage
 
 Get the latest build in the [releases](https://github.com/yazninja/wuwa-tweaks/releases/lastest) page.
-Or get the exe's directly : [Windows](https://github.com/yazninja/wuwa-tweaks/releases/download/v0.1.0/wuwa-tweaks.exe) | [Linux](https://github.com/yazninja/wuwa-tweaks/releases/download/v0.1.0/wuwa-tweaks-linux) | [MacOS](https://github.com/yazninja/wuwa-tweaks/releases/download/v0.1.0/wuwa-tweaks-mac)
+Or get the exe's directly : [Windows](https://github.com/yazninja/wuwa-tweaks/releases/latest/download/wuwa-tweaks.exe) | [Linux](https://github.com/yazninja/wuwa-tweaks/releases/latest/download/wuwa-tweaks-linux) | [MacOS](https://github.com/yazninja/wuwa-tweaks/releases/latest/download/wuwa-tweaks-mac)
 
 ## Build from source
 
