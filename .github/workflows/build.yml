@@ -27,7 +27,7 @@ jobs:
       - name: Build Mac
         run: bun run build-mac
       - name: Upload to Releases
-        uses: dothq/tag-and-release-and-upload@v1.0.2
+        uses: dothq/tag-and-release-and-upload@v1.2.0
         with:
           version: ${{ github.ref_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
