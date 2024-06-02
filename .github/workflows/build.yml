@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - 'v*'
+    branches:
+      - main
+  
 jobs: 
   build:
     runs-on: ubuntu-latest
@@ -24,10 +27,12 @@ jobs:
       - name: Build Mac
         run: bun run build-mac
       - name: Upload to Releases
-        uses: actions/upload-artifact@v4.3.3
+        uses: dothq/tag-and-release-and-upload@v1.0.2
         with:
-          name: artifacts
-          path: dist/
+          version: ${{ github.ref_name }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          assets: '["dist/**"]'
+          overwrite: true
             
         
       
