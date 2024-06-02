@@ -22,10 +22,23 @@ jobs:
         run: bun install
       - name: Build Windows
         run: bun run build-win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wuwa-tweaks.exe
+          path: dist/wuwa-tweaks.exe
       - name: Build Linux
         run: bun run build-linux
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wuwa-tweaks-linux
+          path: dist/wuwa-tweaks-linux
       - name: Build Mac
         run: bun run build-mac
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wuwa-tweaks-mac
+          path: dist/wuwa-tweaks-mac
+        
       - name: Upload to Releases
         uses: dothq/tag-and-release-and-upload@v1.0.2
         with:
