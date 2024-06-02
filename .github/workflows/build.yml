@@ -25,19 +25,19 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: wuwa-tweaks.exe
-          path: dist/wuwa-tweaks.exe
+          path: dist/
       - name: Build Linux
         run: bun run build-linux
       - uses: actions/upload-artifact@v4
         with:
           name: wuwa-tweaks-linux
-          path: dist/wuwa-tweaks-linux
+          path: dist/
       - name: Build Mac
         run: bun run build-mac
       - uses: actions/upload-artifact@v4
         with:
           name: wuwa-tweaks-mac
-          path: dist/wuwa-tweaks-mac
+          path: dist/
         
       - name: Upload to Releases
         uses: dothq/tag-and-release-and-upload@v1.0.2
