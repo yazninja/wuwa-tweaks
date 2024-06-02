@@ -1,4 +1,7 @@
 name: CI/CD
+permissions:
+  contents: write
+  discussions: write
 on:
   push:
     tags:
