@@ -29,17 +29,17 @@ jobs:
         run: bun run build-linux
       - name: Build Mac
         run: bun run build-mac
-      - uses: actions/upload-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: artifacts
           path: dist/
-        
+      - name: Display structure of downloaded files
+        run: ls -R dist/
       - name: Upload to Releases
         uses: dothq/tag-and-release-and-upload@v1.0.2
         with:
           version: ${{ github.ref_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          assets: '["dist/artifacts/wuwa-tweaks.exe", "dist/artifacts/wuwa-tweaks-linux", "dist/artifacts/wuwa-tweaks-mac"]'
+          assets: '["dist/wuwa-tweaks.exe", "dist/wuwa-tweaks-linux", "dist/wuwa-tweaks-mac"]'
           overwrite: true
             
         
