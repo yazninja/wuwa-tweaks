@@ -19,6 +19,7 @@ jobs:
         uses: oven-sh/setup-bun@v1.2.2
         with:
           bun-version: latest
+          no-cache: true
       - name: Install Dependencies
         run: bun install
       - name: Build Windows
