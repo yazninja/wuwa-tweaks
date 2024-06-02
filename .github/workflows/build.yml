@@ -31,7 +31,7 @@ jobs:
         with:
           version: ${{ github.ref_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          assets: '["dist/**"]'
+          assets: '["dist/wuwa-tweaks.exe", "dist/wuwa-tweaks-linux", "dist/wuwa-tweaks-mac"]'
           overwrite: true
             
         
