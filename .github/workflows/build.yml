@@ -28,12 +28,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: dist/
-      - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+      - name: Release
+        uses: softprops/action-gh-release@v2
         with:
-          args: dist/wuwa-tweaks.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: dist/wuwa-tweaks.exe
   # build-mac:
   #   runs-on: macos-latest
   #   steps:
