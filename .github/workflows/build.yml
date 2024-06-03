@@ -32,6 +32,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/wuwa-tweaks.exe
+          tag_name: ${{startsWith(github.ref, 'refs/tags/') && github.ref || 'main'}}
   # build-mac:
   #   runs-on: macos-latest
   #   steps:
