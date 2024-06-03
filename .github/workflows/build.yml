@@ -20,6 +20,7 @@ jobs:
         with:
           bun-version: latest
           no-cache: true
+          bun-download-url: "https://github.com/oven-sh/bun/releases/latest/download/bun-${{runner.os == 'macOS' && 'darwin' || runner.os}}-${{ runner.arch == 'X64' && 'x64' || 'arm64' }}.zip"
       - name: Install Dependencies
         run: bun install
       - name: Build Windows
