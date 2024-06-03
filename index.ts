@@ -1,9 +1,9 @@
 import { type } from "os";
 import { checkbox, input, select, Separator } from "@inquirer/prompts";
-import { dialog } from "@fheahdythdr/node-file-dialog";
 import { file, write, spawnSync, sleep } from "bun";
 import { Database } from "bun:sqlite";
 import { stringify , parse } from 'ini';
+const dialog = require('node-file-dialog');
 
 process.on("SIGINT", () => {
   console.log("\nExiting...");
@@ -315,11 +315,13 @@ async function getGamePaths() {
   let dbPath = "";
   let tweakPath = "";
   let fp: any = await dialog({
-    dialogtype: "open-file",
+    type: "open-file",
     title: "Select Wuthering Waves Game EXE",
     ext: "exe",
     types: [{ display: "Executable", extensions: "*.exe" }],
-  }).catch((_err) => {});
+  }).catch((err) => {
+    console.log(err);
+  });
   if (!fp) {
     console.log("No game path selected.");
     console.log("Exiting in 10 seconds...");

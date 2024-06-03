@@ -15,9 +15,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@fheahdythdr/node-file-dialog": "^1.0.8",
     "@inquirer/prompts": "^5.0.5",
     "@types/ini": "^4.1.0",
-    "ini": "^4.1.3"
+    "ini": "^4.1.3",
+    "node-file-dialog": "^1.0.3"
   }
 }
