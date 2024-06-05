@@ -4,11 +4,12 @@ import { file, write, spawnSync, sleep } from "bun";
 import { Database } from "bun:sqlite";
 import { stringify , parse } from 'ini';
 const dialog = require('node-file-dialog');
-
 process.on("SIGINT", () => {
   console.log("\nExiting...");
   process.exit(0);
 });
+
+
 
 const isRunning = await checkIfProcessIsRunning();
 if (isRunning) {
@@ -319,7 +320,7 @@ async function getGamePaths() {
     title: "Select Wuthering Waves Game EXE",
     ext: "exe",
     types: [{ display: "Executable", extensions: "*.exe" }],
-  }).catch((err) => {
+  }).catch((err: any) => {
     console.log(err);
   });
   if (!fp) {
@@ -328,7 +329,7 @@ async function getGamePaths() {
     await sleep(10000);
     process.exit(0);
   }
-  dbPath = fp[0] + "/../Client/Saved/LocalStorage/LocalStorage.db";
-  tweakPath = fp[0] + "/../Client/Saved/Config/WindowsNoEditor/Engine.ini";
+  dbPath = fp + "/../Client/Saved/LocalStorage/LocalStorage.db";
+  tweakPath = fp + "/../Client/Saved/Config/WindowsNoEditor/Engine.ini";
   return { dbPath, tweakPath };
 }

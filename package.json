@@ -6,7 +6,8 @@
   "scripts": {
     "build-win": "bun build --compile --minify --target=bun-windows-x64-modern index.ts --outfile dist/wuwa-tweaks",
     "build-mac": "bun build --compile --minify --target=bun-macos-x64-modern index.ts --outfile dist/wuwa-tweaks-mac",
-    "build-linux": "bun build --compile --minify --target=bun-linux-x64-modern index.ts --outfile dist/wuwa-tweaks-linux"
+    "build-linux": "bun build --compile --minify --target=bun-linux-x64-modern index.ts --outfile dist/wuwa-tweaks-linux",
+    "dev": "bun run ."
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -15,8 +16,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@fheahdythdr/node-file-dialog": "^1.0.8",
     "@inquirer/prompts": "^5.0.5",
     "@types/ini": "^4.1.0",
+    "fs-dialog": "^1.0.1",
     "ini": "^4.1.3",
     "node-file-dialog": "^1.0.3"
   }
