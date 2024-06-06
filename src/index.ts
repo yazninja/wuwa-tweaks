@@ -1,5 +1,5 @@
-import { checkbox, input, select, Separator } from '@inquirer/prompts';
-import { file, write } from 'bun';
+import { checkbox, editor, input, select, Separator } from '@inquirer/prompts';
+import { file, spawnSync, write } from 'bun';
 import { Database } from 'bun:sqlite';
 import { stringify, parse } from 'ini';
 import { checkIfProcessIsRunning, getGamePaths, exit } from './utils';
@@ -293,16 +293,21 @@ async function optimizeGraphics(tweakPath: string) {
         console.log('Found [SystemSettings] section in Engine.ini...');
     }
     for (let tweak of tweakChoices) {
-        console.log('Applying', tweak);
         config = { ...config, ...tweaks[tweak - 1] };
-        console.log(config);
     }
 
     tweakData = tweakData.split('[SystemSettings]')[0] + '\n[SystemSettings]\n' + stringify(config);
-    console.log(tweakData);
     await write(tweakPath, tweakData).catch(async (e) => {
         console.log('Error:', e.name.startsWith('EPERM') ? 'Permission Denied. Remove read-only attribute\n(You can always add it back afterwards)' : e);
-        await exit();
+        console.log('Executing Manual Edit Mode\n\n');
+
+        await editor({
+            message: 'This is your new Engine.ini. Copy the whole file and paste them in the notepad window that opens after closing this window. Press Enter (2x) to continue.',
+            postfix: '.ini',
+            default: tweakData
+        });
+        console.log('\n\nOpening notepad with Engine.ini for you to manually edit...');
+        spawnSync(['notepad', tweakPath]);
     });
 }
 
