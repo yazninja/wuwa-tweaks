@@ -38,5 +38,5 @@ jobs:
                   files: |
                       dist/wuwa-tweaks.exe
                       dist/wuwa-tweaks-mac
-                      dist/wuwa-twaks-linux
+                      dist/wuwa-tweaks-linux
                   tag_name: ${{startsWith(github.ref, 'refs/tags/') && github.ref || 'main'}}
