@@ -1,85 +1,42 @@
 name: CI/CD
 permissions:
-  contents: write
-  discussions: write
+    contents: write
+    discussions: write
 on:
-  push:
-    tags:
-      - "v*"
-    branches:
-      - main
+    push:
+        tags:
+            - 'v*'
+        branches:
+            - main
 
 jobs:
-  build-win:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Init Bun
-        uses: oven-sh/setup-bun@v1.2.2
-        with:
-          bun-version: latest
-          no-cache: true
-          bun-download-url: "https://github.com/oven-sh/bun/releases/latest/download/bun-${{runner.os == 'macOS' && 'darwin' || runner.os}}-${{ runner.arch == 'X64' && 'x64' || 'arm64' }}.zip"
-      - name: Install Dependencies
-        run: bun install
-      - name: Build Windows
-        run: bun run build-win
-      - uses: actions/download-artifact@v4
-        with:
-          path: dist/
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/wuwa-tweaks.exe
-          tag_name: ${{startsWith(github.ref, 'refs/tags/') && github.ref || 'main'}}
-  # build-mac:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Init Bun
-  #       uses: oven-sh/setup-bun@v1.2.1
-  #       with:
-  #         bun-version: latest
-  #     - name: Install Dependencies
-  #       run: bun install
-  #     - name: Build Mac
-  #       run: bun run build-mac
-  #     - uses: actions/download-artifact@v4
-  #       with:
-  #         path: dist/
-  #     - name: Display structure of downloaded files
-  #       run: ls -R dist/
-  #     - name: Upload to Releases
-  #       uses: dothq/tag-and-release-and-upload@v1.2.0
-  #       with:
-  #         version: ${{ github.ref_name }}
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         assets: '["dist/wuwa-tweaks-mac"]'
-  #         overwrite: true
-  # build-linux:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Init Bun
-  #       uses: oven-sh/setup-bun@v1.2.1
-  #       with:
-  #         bun-version: latest
-  #     - name: Install Dependencies
-  #       run: bun install
-  #     - name: Build Linux
-  #       run: bun run build-linux
-  #     - uses: actions/download-artifact@v4
-  #       with:
-  #         path: dist/
-  #     - name: Display structure of downloaded files
-  #       run: ls -R dist/
-  #     - name: Upload to Releases
-  #       uses: dothq/tag-and-release-and-upload@v1.2.0
-  #       with:
-  #         version: ${{ github.ref_name }}
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         assets: '["dist/wuwa-tweaks-linux"]'
-  #         overwrite: true
+    build-win:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Init Bun
+              uses: oven-sh/setup-bun@v1.2.2
+              with:
+                  bun-version: latest
+                  no-cache: true
+                  bun-download-url: "https://github.com/oven-sh/bun/releases/latest/download/bun-${{runner.os == 'macOS' && 'darwin' || runner.os}}-${{ runner.arch == 'X64' && 'x64' || 'arm64' }}.zip"
+            - name: Install Dependencies
+              run: bun install
+            - name: Build Windows
+              run: bun run build-win
+            - name: Build Mac
+              run: bun run build-mac
+            - name: Build Linux
+              run: bun run build-linux
+            - uses: actions/download-artifact@v4
+              with:
+                  path: dist/
+            - name: Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  files: |
+                      dist/wuwa-tweaks.exe
+                      dist/wuwa-tweaks-mac
+                      dist/wuwa-twaks-linux
+                  tag_name: ${{startsWith(github.ref, 'refs/tags/') && github.ref || 'main'}}
