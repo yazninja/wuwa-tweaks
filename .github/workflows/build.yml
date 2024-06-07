@@ -47,6 +47,6 @@ jobs:
                 accesskeyid: ${{ secrets.R2_ID }} 
                 secretaccesskey: ${{ secrets.R2_KEY }} 
                 bucket: 'github-release' 
-                file: 'wuwa-tweaks.exe'
+                file: 'dist/wuwa-tweaks.exe'
                 destination: ${{ startsWith(github.ref, 'refs/tags/') && 'wuwa-tweaks.exe' || 'wuwa-tweaks-nightly.exe' }}
           
