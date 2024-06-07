@@ -48,7 +48,9 @@ export async function tryResolveExe() {
         '/Program Files/Wuthering Waves/Wuthering Waves Game/Wuthering Waves.exe',
         '/Program Files (x86)/Epic Games/WutheringWaves/Wuthering Waves Game/Wuthering Waves.exe',
         '/Program Files (x86)/Epic Games/WutheringWavesj3oFh/Wuthering Waves Game/Wuthering Waves.exe',
-        '/Program Files (x86)/Wuthering Waves/Wuthering Waves Game/Wuthering Waves.exe'
+        '/Program Files (x86)/Wuthering Waves/Wuthering Waves Game/Wuthering Waves.exe',
+        '/Wuthering Waves Game/Wuthering Waves.exe',
+        '/Wuthering Waves/Wuthering Waves.exe'
     ];
 
     for (let drive of drivePaths) {
