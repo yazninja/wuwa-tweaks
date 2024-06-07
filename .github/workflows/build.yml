@@ -43,9 +43,9 @@ jobs:
             - name: R2 Release
               uses: randomairborne/r2-release@v1.0.2
               with:
-                endpoint: ${{ R2_ENDPOINT }}
-                accesskeyid: ${{ R2_ID }} 
-                secretaccesskey: ${{ R2_KEY }} 
+                endpoint: ${{ secrets.R2_ENDPOINT }}
+                accesskeyid: ${{ secrets.R2_ID }} 
+                secretaccesskey: ${{ secrets.R2_KEY }} 
                 bucket: 'github-release' 
                 file: 'wuwa-tweaks.exe'
                 destination: ${{ startsWith(github.ref, 'refs/tags/') && 'wuwa-tweaks.exe' || 'wuwa-tweaks-nightly.exe' }}
