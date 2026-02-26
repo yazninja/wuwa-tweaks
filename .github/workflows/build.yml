@@ -29,7 +29,7 @@ jobs:
               run: bun run build-mac
             - name: Build Linux
               run: bun run build-linux
-            - uses: actions/download-artifact@v4
+            - uses: actions/download-artifact@v8
               with:
                   path: dist/
             - name: Release
